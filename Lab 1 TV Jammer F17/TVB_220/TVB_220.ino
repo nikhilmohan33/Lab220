@@ -107,8 +107,7 @@ void xmitCodeElement(uint16_t ontime, uint16_t offtime, uint8_t freq )
 
     // Call function to adjust PWM frequency
     adjustPWMFreq();
-  }
-  else {
+    else {
     // This is the case where the frequency is zero, so just turn on the LED
     
     // 220_TODO: add code here to write a digital high to the IR LED pin
@@ -120,19 +119,18 @@ void xmitCodeElement(uint16_t ontime, uint16_t offtime, uint8_t freq )
   // frequency for the specified 'on' time
   
   // 220_TODO: call delay_ten_us function to delay for "ontime"
-  
+  delay_ten_us(ontime);
   
   // Now we can turn off PWM
   // Call function to disable PWM
   disablePWMOutput();
-  
   // And make sure that the IR LED is off too (since the PWM may have
   // been stopped while the LED is on!)  
   
   // 220_TODO: write a digital low to the IR LED pin
-  
+  digitalWrite(LED, LOW);
   // Now we wait for the specified 'off' time
-  
+  delay_ten_us(offtime);
   // 220_TODO: call delay_ten_us function to delay for "offtime"
 }
 
